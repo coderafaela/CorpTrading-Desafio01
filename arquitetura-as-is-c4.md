@@ -1,7 +1,3 @@
-# Arquitetura As-Is: Ambiente de Desenvolvimento de Software
-
-Documento de arquitetura estruturado nos **4 níveis do Modelo C4**, elaborado com base nas diretrizes de ambientes de desenvolvimento de software (definição, componentes, processo de setup e comparativo IDE vs. Ferramentas Independentes).
-
 ---
 
 ## Nível 1: Diagrama de Contexto (System Context)
