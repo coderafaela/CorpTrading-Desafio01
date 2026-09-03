@@ -86,9 +86,9 @@ graph TD
 
 ---
 
-## Nível 4: Diagrama de Execução / Processos (Code)
+## Nível 4: Diagrama de Execução & Fluxo de Código (Otimizado)
 
-O Nível 4 demonstra o fluxo sequencial de interação entre componentes ao executar e depurar software, comparando a abordagem integrada com a abordagem por ferramentas independentes via CLI.
+O Nível 4 foi reestruturado com **blocos visuais de ativação**, **distinção clara entre o fluxo de IDE Integrada e CLI Independente**, e **rótulos explicativos**.
 
 ```mermaid
 sequenceDiagram
@@ -143,8 +143,7 @@ sequenceDiagram
         Runtime-->>Term: Saída de texto bruta (stdout/stderr)
         Term-->>-Dev: Exibe logs diretos na janela do terminal
     end
-
----
+```
 
 ## Instruções de Uso
 
