@@ -1,7 +1,5 @@
 # Arquitetura As-Is: Ambiente de Desenvolvimento de Software
 
-Documento de arquitetura nos **4 níveis do Modelo C4**, otimizado para **alto contraste de cores e legibilidade de textos** no VS Code e GitHub.
-
 ---
 
 ## Nível 1: Diagrama de Contexto (System Context)
