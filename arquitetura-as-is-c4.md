@@ -93,29 +93,56 @@ O Nível 4 demonstra o fluxo sequencial de interação entre componentes ao exec
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Dev as Desenvolvedor
-    participant IDE as IDE / Editor
-    participant Git as Git CLI
-    participant DepManager as Gerenciador Dep.
-    participant Runtime as Runtime / OS
+    actor Dev as 👨‍💻 Desenvolvedor
+    participant IDE as 🖥️ IDE Integrada (GUI)
+    participant Term as 💻 Terminal CLI
+    participant Git as 🌿 Git (VCS)
+    participant Dep as 📦 Gerenciador Dep.
+    participant Runtime as ⚙️ Runtime / OS
 
-    rect rgb(35, 50, 70)
-        note over Dev, Runtime: Cenário A: Abordagem com IDE Integrada (Automática)
-        Dev->>IDE: Clica em "Run/Debug"
-        IDE->>Git: Valida branch ativa
-        IDE->>DepManager: Resolve bibliotecas ausentes
-        IDE->>Runtime: Executa processo com depurador ativo
-        Runtime-->>IDE: Retorna saída do console e breakpoints
+    %% ==========================================
+    %% CENÁRIO 1: ABORDAGEM IDE INTEGRADA
+    %% ==========================================
+    rect rgb(30, 41, 59)
+        note over Dev, Runtime: 🔵 CENÁRIO A: Fluxo Unificado via IDE Integrada (Visual & Automatizado)
+        
+        Dev->>+IDE: 1. Ação de Debug / Build (Clique no Botão "Run")
+        
+        IDE->>+Git: 2. Verifica status do repositório / Branch ativa
+        Git-->>-IDE: Confirmação de status (Clean/OK)
+        
+        IDE->>+Dep: 3. Resolução automática de dependências
+        Dep-->>-IDE: Pacotes verificados / atualizados
+        
+        IDE->>+Runtime: 4. Inicializa processo com depurador ativo (Breakpoints)
+        activate Runtime
+        Runtime-->>IDE: 5. Transmite logs de console em tempo real e intercepta breakpoints
+        deactivate Runtime
+        
+        IDE-->>-Dev: 6. Exibe estado da aplicação, variáveis em memória e stack trace
     end
 
-    rect rgb(50, 40, 30)
-        note over Dev, Runtime: Cenário B: Abordagem Independentes (Manual/CLI)
-        Dev->>Git: Executa 'git checkout main' no terminal
-        Dev->>DepManager: Executa 'npm install' ou 'mvn install'
-        Dev->>Runtime: Executa scripts via CLI diretamente
-        Runtime-->>Dev: Retorna saída bruta no terminal
+    %% ==========================================
+    %% CENÁRIO 2: ABORDAGEM FERRAMENTAS INDEPENDENTES
+    %% ==========================================
+    rect rgb(45, 30, 20)
+        note over Dev, Runtime: 🟠 CENÁRIO B: Fluxo Desacoplado via CLI (Manual & Multi-Janela)
+        
+        Dev->>+Term: 1. Executa 'git checkout feature & git status'
+        Term->>+Git: Consulta estado local
+        Git-->>-Term: Retorna branch e alterações
+        Term-->>-Dev: Exibe resultado no terminal
+        
+        Dev->>+Term: 2. Executa 'npm install' / 'mvn clean install'
+        Term->>+Dep: Baixa e resolve dependências
+        Dep-->>-Term: Conclui instalação de pacotes
+        Term-->>-Dev: Exibe log de dependências
+        
+        Dev->>+Term: 3. Executa 'npm start' / 'java -jar app.jar'
+        Term->>+Runtime: Dispara processo de execução no SO
+        Runtime-->>Term: Saída de texto bruta (stdout/stderr)
+        Term-->>-Dev: Exibe logs diretos na janela do terminal
     end
-```
 
 ---
 
